@@ -1,1 +1,1 @@
-# wallet-money-flow-proxy
+# wallet-money-api-gateway
