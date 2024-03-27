@@ -16,8 +16,6 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 COPY ./conf/conf.d/* /etc/nginx/conf.d/
 
-# Делаем скрипт исполняемым
-RUN chmod +x ./replace_env.sh
 
 # Запуск Nginx в фоновом режиме
 CMD ["nginx", "-g", "daemon off;"]
