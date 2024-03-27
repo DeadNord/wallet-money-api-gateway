@@ -12,13 +12,12 @@ RUN mkdir -p /logs
 # Удаление стандартных файлов конфигурации Nginx
 RUN rm /etc/nginx/conf.d/default.conf
 
-# Копирование шаблонов и скриптов
-COPY ./conf/nginx.conf.template ./nginx.conf.template
-COPY ./conf/conf.d/ ./conf.d/
-COPY replace_env.sh ./replace_env.sh
+# Копирование вашего нового конфигурационного файла и дополнительных конфигураций, если они есть
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/conf.d/* /etc/nginx/conf.d/
 
 # Делаем скрипт исполняемым
 RUN chmod +x ./replace_env.sh
 
-# Запускаем скрипт замены переменных и Nginx
-CMD ["/bin/sh", "-c", "./replace_env.sh && nginx -g 'daemon off;'"]
+# Запуск Nginx в фоновом режиме
+CMD ["nginx", "-g", "daemon off;"]
