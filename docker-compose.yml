@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  api-gateway:
+    build: .
+    image: api-gateway:1.0
+    ports:
+      - "${NGINX_SERVER_PORT}:${NGINX_SERVER_PORT}"
+    volumes:
+      - ./logs:/var/log/nginx 
+    env_file:
+      - ./.env
+    networks:
+      - my-network
+
+  auth:
+    image: auth-service
+    networks:
+      - my-network
+
+  finances:
+    image: finances_service-api
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

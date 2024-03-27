@@ -1,0 +1,53 @@
+# User and worker configuration
+user nginx;
+worker_processes auto; # Auto-adapt number of workers
+pid /run/nginx.pid;
+include /usr/share/nginx/modules/*.conf;
+
+# Event settings
+events {
+    worker_connections 1024; # Max number of connections per worker
+}
+
+# HTTP configuration
+http {
+    # Log format definition
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+    '$status $body_bytes_sent "$http_referer" '
+    '"$http_user_agent" "$http_x_forwarded_for"';
+
+    # Log files paths
+    access_log /path/to/logs/access.log main;
+    error_log /path/to/logs/error.log warn;
+
+    # Connection settings
+    keepalive_timeout 65; # Timeout for keeping connections open
+    limit_req_zone $binary_remote_addr zone=api:10m rate=5r/s; # Rate limiting for API zone
+
+    # Proxy headers settings for forwarding
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_pass_request_headers on;
+
+    # Server settings for HTTPS
+    server {
+        listen __NGINX_LISTEN_PORT__ ssl; # Listen port, replace with actual value, ensure SSL is enabled
+        server_name __NGINX_SERVER_HOST__; # Server name, replace with actual value
+
+        # SSL configuration
+        ssl_certificate /etc/nginx/conf.d/ssl/your_domain.crt; # Path to your SSL certificate
+        ssl_certificate_key /etc/nginx/conf.d/ssl/your_domain.key; # Path to your SSL private key
+        ssl_protocols TLSv1.2 TLSv1.3; # Recommended SSL protocols
+        ssl_ciphers HIGH:!aNULL:!MD5; # Recommended SSL ciphers
+
+        # API rate limiting
+        location /api {
+            limit_req zone=api burst=10; # Applying rate limit to API requests
+        }
+    }
+
+    # Include additional configurations
+    include /etc/nginx/conf.d/*.conf;
+}
