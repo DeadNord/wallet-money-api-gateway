@@ -5,36 +5,36 @@
 
 app = 'wallet-money-api-gateway'
 primary_region = 'ams'
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
 
-[build]
+[env]
 
-[http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+[experimental]
+  auto_rollback = true
 
 [[services]]
-  internal_port = 8080
+  internal_port = 80
   protocol = "tcp"
 
   [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
+    hard_limit = 200
+    soft_limit = 180
+    type = "connections"
 
   [[services.ports]]
-    handlers = ["http"]
+    handlers = []
     port = 80
 
   [[services.ports]]
-    handlers = ["tls", "http"]
+    handlers = []
     port = 443
 
   [[services.tcp_checks]]
     grace_period = "1s"
-    interval = "15s"
+    interval = "5s"
+    restart_limit = 0
     timeout = "2s"
 
 [[vm]]

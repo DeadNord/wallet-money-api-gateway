@@ -8,6 +8,7 @@ WORKDIR /etc/nginx
 
 # Создание директории logs
 RUN mkdir -p /logs
+RUN mkdir -p /var/www/letsencrypt
 
 # Удаление стандартных файлов конфигурации Nginx
 RUN rm /etc/nginx/conf.d/default.conf

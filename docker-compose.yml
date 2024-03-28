@@ -4,9 +4,6 @@ services:
     build: .
     image: api-gateway:1.0
     ports:
-      - "${NGINX_SERVER_PORT}:${NGINX_SERVER_PORT}"
+      - "3001:3001"
     volumes:
       - ./logs:/var/log/nginx 
-    env_file:
-      - ./.env
-  
