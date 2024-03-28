@@ -1,7 +1,14 @@
 FROM nginx:latest
 
-# Установка зависимостей для envsubst (если не установлены)
-RUN apt-get update && apt-get install -y gettext-base
+
+RUN apt-get update
+RUN apt-get install -y sudo
+RUN sudo apt-get upgrade
+RUN apt-get install -y tree
+RUN sudo apt-get install -y iproute2
+RUN sudo apt-get remove -y certbot
+RUN sudo apt-get install -y certbot
+RUN sudo apt-get install -y python3-certbot-nginx
 
 # Установка рабочей директории в контейнере
 WORKDIR /etc/nginx
@@ -18,5 +25,9 @@ COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 COPY ./conf/conf.d/* /etc/nginx/conf.d/
 
 
-# Запуск Nginx в фоновом режиме
+COPY ./conf/conf.d/ssl/fullchain.pem /etc/letsencrypt/live/wallet-money-api-gateway.fly.dev/fullchain.pem
+COPY ./conf/conf.d/ssl/privkey.pem /etc/letsencrypt/live/wallet-money-api-gateway.fly.dev/privkey.pem
+
+
+# # # Запуск Nginx в фоновом режиме
 CMD ["nginx", "-g", "daemon off;"]

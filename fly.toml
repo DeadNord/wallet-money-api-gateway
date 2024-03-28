@@ -15,7 +15,7 @@ processes = []
   auto_rollback = true
 
 [[services]]
-  internal_port = 80
+  internal_port = 443
   protocol = "tcp"
 
   [services.concurrency]
@@ -37,6 +37,11 @@ processes = []
     restart_limit = 0
     timeout = "2s"
 
+  [[tls]]
+    cert_file = "/etc/letsencrypt/live/wallet-money-api-gateway.fly.dev/fullchain.pem"
+    key_file = "/etc/letsencrypt/live/wallet-money-api-gateway.fly.dev/privkey.pem"
+
+    
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
