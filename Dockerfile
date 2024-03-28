@@ -5,10 +5,12 @@ RUN apt-get update
 RUN apt-get install -y sudo
 RUN sudo apt-get upgrade
 RUN apt-get install -y tree
+RUN apt-get install -y procps
 RUN sudo apt-get install -y iproute2
 RUN sudo apt-get remove -y certbot
 RUN sudo apt-get install -y certbot
 RUN sudo apt-get install -y python3-certbot-nginx
+RUN sudo apt-get install -y ca-certificates && update-ca-certificates
 
 # Установка рабочей директории в контейнере
 WORKDIR /etc/nginx
