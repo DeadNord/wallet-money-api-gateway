@@ -27,8 +27,8 @@ COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 COPY ./conf/conf.d/* /etc/nginx/conf.d/
 
 
-COPY ./conf/conf.d/ssl/fullchain.pem /etc/letsencrypt/live/wallet-money-api-gateway.fly.dev/fullchain.pem
-COPY ./conf/conf.d/ssl/privkey.pem /etc/letsencrypt/live/wallet-money-api-gateway.fly.dev/privkey.pem
+# COPY ./conf/conf.d/ssl/fullchain.pem /etc/letsencrypt/live/wallet-money-api-gateway.fly.dev/fullchain.pem
+# COPY ./conf/conf.d/ssl/privkey.pem /etc/letsencrypt/live/wallet-money-api-gateway.fly.dev/privkey.pem
 
 
 # # # Запуск Nginx в фоновом режиме

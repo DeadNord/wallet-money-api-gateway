@@ -15,7 +15,7 @@ processes = []
   auto_rollback = true
 
 [[services]]
-  internal_port = 443
+  internal_port = 80
   protocol = "tcp"
 
   [services.concurrency]
@@ -23,13 +23,13 @@ processes = []
     soft_limit = 180
     type = "connections"
 
-  [[services.ports]]
-    handlers = []
-    port = 80
+[[services.ports]]
+  handlers = ["http"]
+  port = 80
 
-  [[services.ports]]
-    handlers = []
-    port = 443
+[[services.ports]]
+  handlers = ["tls", "http"]
+  port = 443
 
   [[services.tcp_checks]]
     grace_period = "1s"
