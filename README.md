@@ -30,8 +30,8 @@ The Wallet Money Auth Service is a robust authentication system designed for the
 ### Finances Service API
 
 - **Repository:** [Finances Service API](https://github.com/DeadNord/wallet-money-finances-service)
-- **Swagger UI:** [Finances Service API Documentation](https://wallet-money-api-gateway.fly.dev/api/finances/swagger)
-- **ReDoc:** [Finances Service API ReDoc Documentation](https://wallet-money-api-gateway.fly.dev/api/finances/redoc)
+- **Swagger UI:** [Finances Service API Documentation](https://wallet-money-api-gateway.fly.dev/swagger)
+- **ReDoc:** [Finances Service API ReDoc Documentation](https://wallet-money-api-gateway.fly.dev/redoc)
 
 The Finances Service API focuses on managing financial transactions and budgets for users. It enables efficient tracking and analysis of personal finances.
 
