@@ -37,7 +37,7 @@ processes = []
     key_file = "/etc/letsencrypt/live/wallet-money-api-gateway.fly.dev/privkey.pem"
 
 [[vm]]
-  memory = '256MB'
+  memory = '512MB'
   cpu_kind = 'shared'
   cpus = 1
 
