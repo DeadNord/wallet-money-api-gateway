@@ -15,7 +15,7 @@ docker-compose up --build
 ### Wallet Money Auth Service
 
 - **Repository:** [Wallet Money Auth Service](https://github.com/DeadNord/wallet-money-auth-service)
-- **Swagger UI:** [Auth Service API Documentation](https://wallet-money-api-gateway.fly.dev/api/auth/swagger)
+- **Swagger UI:** [Auth Service API Documentation](https://wallet-money-auth-service.fly.dev/api/auth/swagger)
 
 The Wallet Money Auth Service is a robust authentication system designed for the Wallet Money ecosystem, built with Nest.js. It provides essential features for managing user authentication securely and efficiently.
 
@@ -30,8 +30,8 @@ The Wallet Money Auth Service is a robust authentication system designed for the
 ### Finances Service API
 
 - **Repository:** [Finances Service API](https://github.com/DeadNord/wallet-money-finances-service)
-- **Swagger UI:** [Finances Service API Documentation](https://wallet-money-api-gateway.fly.dev/swagger)
-- **ReDoc:** [Finances Service API ReDoc Documentation](https://wallet-money-api-gateway.fly.dev/redoc)
+- **Swagger UI:** [Finances Service API Documentation](https://wallet-money-api-gateway.fly.dev/api/finances/swagger)
+- **ReDoc:** [Finances Service API ReDoc Documentation](https://wallet-money-api-gateway.fly.dev/finances/redoc)
 
 The Finances Service API focuses on managing financial transactions and budgets for users. It enables efficient tracking and analysis of personal finances.
 
@@ -45,7 +45,7 @@ The Finances Service API focuses on managing financial transactions and budgets 
 ### Wallet Money Client
 
 - **Repository:** [Wallet Money Client](https://github.com/DeadNord/wallet-money-client)
-- **Live Demo:** [Wallet Money Client App](https://wallet-money-client.netlify.app/)
+- **Live Demo:** [Wallet Money Client App](https://wallet-money-client.netlify.app)
 
 The Wallet Money Client is the front-end application that interacts with the Auth Service and Finances Service, providing a user-friendly interface for managing personal finances and authentication.
 
