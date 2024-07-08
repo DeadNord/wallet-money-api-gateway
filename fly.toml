@@ -12,6 +12,8 @@ processes = []
 [[services]]
   internal_port = 80
   protocol = "tcp"
+  min_machines_running = 0
+  auto_stop_machines = true
 
   [services.concurrency]
     hard_limit = 200
@@ -25,6 +27,8 @@ processes = []
 [[services.ports]]
   handlers = ["tls", "http"]
   port = 443
+  min_machines_running = 0
+  auto_stop_machines = true
 
   [[services.tcp_checks]]
     grace_period = "1s"
